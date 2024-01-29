@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>Library Room Booking System</h1>
 
-## Getting Started
+<p align="center">
+  <b>⚠️&nbsp;&nbsp;This project is still under development.&nbsp;&nbsp;⚠️</b>
+</p>
 
-First, run the development server:
+<!-- Warning message  -->
+<p align="center">
+  <b>⚠️&nbsp;&nbsp;This project is still under development.&nbsp;&nbsp;⚠️</b>
+</p>
 
+<p align="center">
+  <b>⚠️&nbsp;&nbsp;NO JWT AUTH IMPLEMENTED YET.&nbsp;&nbsp;⚠️</b>
+</p>
+
+## Table of Contents
+- [Table of Contents](#table-of-contents)
+- [System Requirements](#system-requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+
+## System Requirements
+- [Node.js](https://nodejs.org/en/) (v20.0.0 or higher)
+- [PostgreSQL](https://www.postgresql.org/) (v15.0 or higher)
+
+## Installation
+1. Clone the repository
+```bash
+git clone https://github.com/Briiad/library-room-booking-system.git
+```
+2. Install dependencies
+```bash
+npm install
+```
+3. Create a `.env` file in the root directory and add the following environment variables
+```bash
+DATABASE_URL="postgres://postgres:password@localhost:5432/DB_NAME?schema=public"
+NODEMAILER_KEY="your_nodemailer_key"
+NODEMAILER_MAIL="your_nodemailer_mail"
+```
+4. Initialize Prisma
+```bash
+npx prisma db push
+npx prisma db pull
+npx prisma generate
+```
+5. Start the server
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
+1. Open the browser and go to `http://localhost:3000/`
+2. Try to submit requests with available forms
+3. Open `http://localhost:3000/admin` to access the admin panel
+4. From the admin panel, you can view all the requests and approve or reject them
+5. The user will receive an email with the status of their request
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
