@@ -3,7 +3,7 @@ import { sendEmail } from '@/app/components/EmailTemplate';
 
 export async function POST(request: Request) {
   const res = await request.json();
-  const {id, name, mail, room, startDate, endDate, status} = res;
+  const {id, name, mail, room, startDate, status, startSession} = res;
   console.log(mail)
 
   const email = await sendEmail(
@@ -12,13 +12,17 @@ export async function POST(request: Request) {
     `
       <p>Dear ${name},</p>
       <br>
-      <>Your booking request for the <b> ${room} </b> has been <b> ${status} </b>. Please be informed 
-      that your booking request is from <b> ${startDate} </b> to <b> ${endDate} </b>. Further usage of the room
-      after the booking period is not allowed.</p>
+      <p>Your booking request for the <b> ${room} </b> has been <b> ${status} </b>. This is the
+      information regarding your booking:</p>
+      </p>
+      <p>Start Date: ${startDate}</p>
+      <p>Start Session: ${startSession}</p>
       <br>
-      <p>Regards,</p>
-      <p>Library Management System</p>
-      <p>Booking ID: ${id}</p>
+
+      <p>Thank you for using our service.</p>
+      <p>Best Regards,</p>
+      <p>Library Room Booking Service</p>
+      <p>ID: ${id}</p>
     `,
   )
 

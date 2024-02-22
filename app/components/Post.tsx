@@ -10,12 +10,12 @@ interface PostProps {
     user_nim: string;
     user_mail: string;
     room_name: string;
+    startSession: string;
     startDate: string;
-    endDate: string;
     status: string;
 }
 
-export default function Post({ id, user_name, user_nim, user_mail, room_name, startDate, endDate, status }: PostProps) {
+export default function Post({ id, user_name, user_nim, user_mail, room_name, startSession, startDate, status }: PostProps) {
 
   const [newStatus, setNewStatus] = useState("");
 
@@ -42,8 +42,8 @@ export default function Post({ id, user_name, user_nim, user_mail, room_name, st
           name: user_name,
           mail: user_mail,
           room: room_name,
+          startSession: startSession,
           startDate: startDate,
-          endDate: endDate,
           status: newStatus,
         })
       })
@@ -61,10 +61,9 @@ export default function Post({ id, user_name, user_nim, user_mail, room_name, st
             <th className="p-2 border" >ID</th>
             <th className="p-2 border" >Name</th>
             <th className="p-2 border" >NIM</th>
-            <th className="p-2 border" >Email</th>
             <th className="p-2 border" >Room</th>
-            <th className="p-2 border" >Start Date</th>
-            <th className="p-2 border" >End Date</th>
+            <th className="p-2 border" >Start Session</th>
+            <th className="p-2 border" >Date</th>
             <th className="p-2 border" >Accept Request</th>
           </tr>
         </thead>
@@ -73,10 +72,9 @@ export default function Post({ id, user_name, user_nim, user_mail, room_name, st
             <td className="p-4 border">{id}</td>
             <td className="p-4 border">{user_name}</td>
             <td className="p-4 border">{user_nim}</td>
-            <td className="p-4 border">{user_mail}</td>
             <td className="p-4 border">{room_name}</td>
+            <td className="p-4 border">{startSession}</td>
             <td className="p-4 border">{startDate}</td>
-            <td className="p-4 border">{endDate}</td>
             {/* 2 Buttons, Accept and Decline*/}
             <td className="p-4 border">
               {status === "pending" && (

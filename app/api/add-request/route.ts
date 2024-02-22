@@ -3,8 +3,8 @@ import prisma from "@/lib/prisma";
 
 export async function POST(request: Request){
   const res = await request.json();
-  // console.log(res);
-  const {name, nim, mail, roomName, startDate, endDate} = res;
+  console.log(res);
+  const {name, nim, mail, roomName, startDate, startSession} = res;
 
   const result = await prisma.room.create({
     data: {
@@ -12,8 +12,8 @@ export async function POST(request: Request){
       user_nim: nim,
       user_mail: mail,
       room_name: roomName,
-      startDate: startDate,
-      endDate: endDate
+      startSession: startSession,
+      startDate: startDate
     }
   
   })

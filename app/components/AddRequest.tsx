@@ -7,8 +7,8 @@ export default function AddRequest() {
   const [nim, setNim] = useState("");
   const [mail, setMail] = useState("");
   const [roomName, setRoomName] = useState("");
+  const [startSession, setStartSession] = useState("");
   const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,8 +22,8 @@ export default function AddRequest() {
         nim: nim,
         mail: mail,
         roomName: roomName,
-        startDate: startDate,
-        endDate: endDate,
+        startSession: startSession,
+        startDate: startDate
       })
     })
     }catch(error){
@@ -37,8 +37,8 @@ export default function AddRequest() {
     setNim("");
     setMail("");
     setRoomName("");
+    setStartSession("");
     setStartDate("");
-    setEndDate("");
   };
 
   return (
@@ -97,7 +97,7 @@ export default function AddRequest() {
             value={mail}
             onChange={(e) => setMail(e.target.value)}
             className="w-full p-2 border border-gray-400 rounded mt-1"
-            placeholder="Your Phone Number"
+            placeholder="Your Email"
             required
           />
         </div>
@@ -128,6 +128,26 @@ export default function AddRequest() {
         <div className="flex flex-col md:flex-row md:space-x-4">
           <div className="flex-1">
             <label htmlFor="startDate" className="text-sm">
+              Session
+            </label>
+            <select
+              name="startSession"
+              id="startSession"
+              value={startSession}
+              onChange={(e) => setStartSession(e.target.value)}
+              className="w-full p-2 border border-gray-400 rounded mt-1"
+              required
+            >
+              <option value="">Select Session</option>
+              <option value="07.00 - 9.00">07.00 - 9.00</option>
+              <option value="09.00 - 11.00">09.00 - 11.00</option>
+              <option value="11.00 - 13.00">11.00 - 13.00</option>
+              <option value="13.00 - 15.00">13.00 - 15.00</option>
+              <option value="15.00 - 17.00">15.00 - 17.00</option>
+            </select>
+          </div>
+          <div className="flex-1">
+            <label htmlFor="endDate" className="text-sm">
               Start Date
             </label>
             <input
@@ -136,20 +156,6 @@ export default function AddRequest() {
               id="startDate"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="w-full p-2 border border-gray-400 rounded mt-1"
-              required
-            />
-          </div>
-          <div className="flex-1">
-            <label htmlFor="endDate" className="text-sm">
-              End Date
-            </label>
-            <input
-              type="date"
-              name="endDate"
-              id="endDate"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
               className="w-full p-2 border border-gray-400 rounded mt-1"
               required
             />

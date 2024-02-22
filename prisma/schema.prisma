@@ -7,24 +7,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  password  String
-  name      String
+model Admin {
+  id       String    @id @default(cuid())
+  password String
+  username String?   @unique
+  name     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Room {
-  id        Int      @id @default(autoincrement())
-  user_name String
-  user_nim  String
-  user_mail String
-  room_name String
-  startDate String
-  endDate   String
-  status    String   @default("pending")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           Int      @id @default(autoincrement())
+  user_name    String
+  user_nim     String
+  user_mail    String
+  room_name    String
+  startDate    String
+  status       String   @default("pending")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  startSession String
 }
