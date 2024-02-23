@@ -2,7 +2,7 @@ import React from 'react'
 import Sidebar from '../components/Sidebar'
 import { getServerSession } from "next-auth";
 import { authOptions } from "../utils/auth";
-import { notFound } from 'next/navigation';
+import Unauthorized from '../components/Unauthorized';
 
 export default async function Layout({children}: {children: React.ReactNode}) {
   const session = await getServerSession(authOptions);
@@ -16,6 +16,6 @@ export default async function Layout({children}: {children: React.ReactNode}) {
       </div>
     )
   } else {
-    notFound()
+    return <Unauthorized />
   }
 }
