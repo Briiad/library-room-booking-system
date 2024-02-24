@@ -15,7 +15,6 @@ const LoginAdmin = () => {
       password: form.get('password'),
       redirect: false
     })
-    console.log(signInData)
 
     if(signInData?.error){
       console.error('Failed to login')

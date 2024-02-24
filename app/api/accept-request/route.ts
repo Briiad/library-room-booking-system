@@ -3,8 +3,7 @@ import prisma from "@/lib/prisma";
 
 export async function POST(request: Request){
   const res = await request.json();
-  console.log(res);
-  const {id, status} = res;
+  const {id, name, nim, mail, roomName, startSession, startDate, status} = res;
 
   const result = await prisma.room.update({
     where: {
@@ -14,6 +13,21 @@ export async function POST(request: Request){
       status: status
     }  
   })
+
+  // if status accepted, add data to history table
+  if(status === "accepted"){
+    const history = await prisma.history.create({
+      data: {
+        user_name: name,
+        user_nim: nim,
+        user_mail: mail,
+        room_name: roomName,
+        startSession: startSession,
+        startDate: startDate,
+        status: status
+      }
+    })
+  }
 
   return NextResponse.json({data: res})
 }

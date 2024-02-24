@@ -17,7 +17,7 @@ model Admin {
 }
 
 model Room {
-  id           Int      @id @default(autoincrement())
+  id           String     @id @default(uuid())
   user_name    String
   user_nim     String
   user_mail    String
@@ -26,5 +26,18 @@ model Room {
   status       String   @default("pending")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  startSession String
+}
+
+model History {
+  id        Int      @id @default(autoincrement())
+  user_name String
+  user_nim  String
+  user_mail String
+  room_name String
+  startDate String
+  status    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   startSession String
 }

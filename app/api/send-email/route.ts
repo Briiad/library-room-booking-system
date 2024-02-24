@@ -4,7 +4,6 @@ import { sendEmail } from '@/app/components/EmailTemplate';
 export async function POST(request: Request) {
   const res = await request.json();
   const {id, name, mail, room, startDate, status, startSession} = res;
-  console.log(mail)
 
   const email = await sendEmail(
     'Status Regarding Your Library Room Booking Request',
