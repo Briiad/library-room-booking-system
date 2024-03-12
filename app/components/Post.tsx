@@ -1,8 +1,6 @@
 'use client'
 
-import prisma from "@/lib/prisma";
 import { useState } from "react";
-import { MdOutlineCancel } from "react-icons/md";
 
 interface PostProps {
     id: string;
@@ -11,7 +9,7 @@ interface PostProps {
     user_mail: string;
     room_name: string;
     startSession: string;
-    startDate: string;
+    startDate: Date;
     status: string;
 }
 
@@ -61,19 +59,18 @@ export default function Post({ id, user_name, user_nim, user_mail, room_name, st
 
   return (
     <>
-      <td className="p-4 border">{id}</td>
       <td className="p-4 border">{user_name}</td>
       <td className="p-4 border">{user_nim}</td>
       <td className="p-4 border">{room_name}</td>
       <td className="p-4 border">{startSession}</td>
-      <td className="p-4 border">{startDate}</td>
+      <td className="p-4 border">{startDate.toISOString()}</td>
       {/* 2 Buttons, Accept and Decline*/}
       <td className="p-4 border">
         {status === "pending" && (
           // Change to corresponding status based on button clicked
-          <div className="flex">
+          <div className="flex justify-center">
             {/* Form with 2 Buttons */}
-            <form onSubmit={handleRequest} className="flex flex-col justify-center">
+            <form onSubmit={handleRequest} className="flex justify-center">
               <button
                 type="submit"
                 className="bg-green-500 mr-2 hover:bg-green-700 text-white w-full py-2 px-4 font-bold rounded"

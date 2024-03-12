@@ -15,7 +15,7 @@ export async function POST(request: Request){
   })
 
   // if status accepted, add data to history table
-  if(status === "accepted"){
+  if(status === "accepted" || status === "declined"){
     const history = await prisma.history.create({
       data: {
         user_name: name,
@@ -25,6 +25,13 @@ export async function POST(request: Request){
         startSession: startSession,
         startDate: startDate,
         status: status
+      }
+    })
+
+    // Then delete the request data from room table
+    const deleteRequest = await prisma.room.delete({
+      where: {
+        id: id
       }
     })
   }
