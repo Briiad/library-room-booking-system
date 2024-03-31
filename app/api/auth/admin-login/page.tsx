@@ -4,8 +4,21 @@ import React, { FormEvent } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  useToast
+} from '@chakra-ui/react'
+
 const LoginAdmin = () => {
   const router = useRouter()
+  const toast = useToast();
 
   async function handleSubmit(e: FormEvent){
     e.preventDefault()
@@ -17,8 +30,23 @@ const LoginAdmin = () => {
     })
 
     if(signInData?.error){
-      console.error('Failed to login')
+      toast({
+        title: 'Login Failed',
+        position: 'top-right',
+        description: 'Invalid username or password',
+        status: 'error',
+        duration: 9000,
+        isClosable: true
+      })
     } else {
+      toast({
+        title: 'Login Success',
+        position: 'top-right',
+        description: 'Redirecting to admin page...',
+        status: 'success',
+        duration: 9000,
+        isClosable: true
+      })
       router.push('/admin')
     }
   }

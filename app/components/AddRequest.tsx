@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react";
-import { ChakraProvider, useDisclosure } from '@chakra-ui/react'
+import { ChakraProvider, useDisclosure, Heading } from '@chakra-ui/react'
 
 import {
   Modal,
@@ -92,9 +92,12 @@ export default function AddRequest() {
   return (
     <ChakraProvider>
       {/* FORM */}
-      <section className="w-full min-h-screen bg-library bg-center bg-cover">
-        <div className="w-full min-h-screen p-8 flex items-center justify-evenly  bg-black/50">
-          <div className="w-2/4 text-center text-white">
+      <section className="w-full min-h-screen flex justify-center items-center flex-col ">
+      <Heading as='h1' size='3xl' noOfLines={1} p={6}>
+        Reservasi Ruanganmu Sekarang!
+      </Heading>
+        <div className="w-full flex items-center justify-evenly">
+          <div className="w-2/4 text-center">
             <h1 className="text-3xl font-semibold tracking-wide mt-6 mb-2">
               Form Peminjaman Ruangan
             </h1>
@@ -102,7 +105,7 @@ export default function AddRequest() {
               Silahkan isi form untuk melakukan peminjaman ruangan
             </p>
           </div>
-          <form onSubmit={handleSubmit} className="max-w-xl mx-auto bg-white p-4 rounded-md">
+          <form onSubmit={handleSubmit} className="max-w-xl mx-auto bg-white p-8 rounded-md">
             <h1 className="text-2xl font-bold mb-4">Request Form</h1>
             {/* Name, Nim, Side by Side */}
             <div className="flex flex-col md:flex-row md:space-x-4">
@@ -216,7 +219,7 @@ export default function AddRequest() {
             {/* Submit Button */}
             <p
               onClick={onOpen}
-              className="w-full cursor-pointer text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold p-3 rounded mt-4"
+              className="w-full cursor-pointer text-center bg-[#FFBF2F] hover:bg-[#ff9f55] text-white font-semibold p-3 rounded mt-4"
             >
               Submit
             </p>

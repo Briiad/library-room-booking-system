@@ -11,9 +11,9 @@ interface CsvConvertProps {
 const CsvConvert: FC<CsvConvertProps> = ({data}) => {
 
   const csvData = [
-    ["createdAt", "Id", "Name", "NIM", "Email", "Room", "status", "Start Session", "Date",],
-    ...data.map(({createdAt, id, user_name, user_nim, user_mail, room_name, status, startSession, startDate}) => [
-      createdAt, id, user_name, user_nim, user_mail, room_name, status, startSession, startDate
+    ["Id", "Name", "NIM", "Email", "Room", "Status", "Start Session", "Date", "createdAt",],
+    ...data.map(({id, user_name, user_nim, user_mail, room_name, status, startSession, startDate, createdAt}) => [
+      id, user_name, user_nim, user_mail, room_name, status, startSession, startDate, createdAt
     ])
   ]
 

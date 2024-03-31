@@ -2,8 +2,7 @@ import React from 'react'
 import Sidebar from '../components/Sidebar'
 import { getServerSession } from "next-auth";
 import { authOptions } from "../utils/auth";
-import Unauthorized from '../components/Unauthorized';
-import { ChakraProvider } from '@chakra-ui/react';
+import { redirect } from 'next/navigation'
 
 export default async function Layout({children}: {children: React.ReactNode}) {
   const session = await getServerSession(authOptions);
@@ -14,13 +13,12 @@ export default async function Layout({children}: {children: React.ReactNode}) {
           <Sidebar />
         </div>
         <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
-          <ChakraProvider>
             {children}
-          </ChakraProvider>
         </div>
       </div>
     )
   } else {
-    return <Unauthorized />
+    // redirect to login page
+    redirect('/api/auth/admin-login')
   }
 }
