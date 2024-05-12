@@ -253,8 +253,8 @@ const NAV_ITEMS: Array<NavItem> = [
         href: '/content/ruangan',
       },
       {
-        label: 'Cek Ruangan',
-        subLabel: 'Cek ruangan disini sebelum reservasi',
+        label: 'Tambah Ruangan',
+        subLabel: 'Tambah ruangan baru',
         href: '/content/cek-ruangan',
       },
     ],

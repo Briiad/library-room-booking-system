@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { ChakraProvider, useDisclosure, Heading } from '@chakra-ui/react'
-
 import {
   Modal,
   ModalOverlay,

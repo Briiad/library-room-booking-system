@@ -852,7 +852,12 @@ export default function Hero() {
         <Stack spacing={6} direction={'row'}>
           <Button rounded={'full'} px={6} >
             <Link href='/content/ruangan' isExternal>
-              Pelajari Lebih Lanjut <ExternalLinkIcon mx='2px' />
+              List Ruangan <ExternalLinkIcon mx='2px' />
+            </Link>
+          </Button>
+          <Button rounded={'full'} px={6} bg={'orange.400'} color={'white'} >
+            <Link href='/content/cek-ruangan' isExternal>
+              Cek Ruangan <ExternalLinkIcon mx='2px' />
             </Link>
           </Button>
         </Stack>
