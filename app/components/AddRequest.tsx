@@ -118,11 +118,11 @@ export default function AddRequest() {
   return (
     <ChakraProvider>
       {/* FORM */}
-      <section className="w-full min-h-screen flex justify-center items-center flex-col ">
-      <Heading as='h1' size='3xl' noOfLines={1} p={6}>
+      <section className="w-full min-h-screen flex justify-center items-center flex-col">
+      <Heading as='h1' textAlign={'center'} size={{base: 'xl', md: '2xl'}} noOfLines={{base: 3, md: 1}} p={6}>
         Reservasi Ruanganmu Sekarang!
       </Heading>
-        <div className="w-full flex items-center justify-evenly">
+        <div className="w-full flex items-center justify-evenly flex-col md:flex-row">
           <div className="w-2/4 text-center">
             <h1 className="text-3xl font-semibold tracking-wide mt-6 mb-2">
               Form Peminjaman Ruangan

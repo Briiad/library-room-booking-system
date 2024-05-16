@@ -9,6 +9,7 @@ import {
   Text,
   useColorModeValue,
   VisuallyHidden,
+  Image
 } from '@chakra-ui/react';
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { ReactNode } from 'react';
@@ -76,6 +77,7 @@ export default function Footer() {
         justify={'center'}
         align={'center'}>
         {/* <Logo /> */}
+        <Image src="/logo-um.png" alt="RuangKita Logo" boxSize="50px" />
         {/* Text Logo, Bold */}
         <Text 
           fontWeight={800}
