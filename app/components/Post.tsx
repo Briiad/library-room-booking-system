@@ -57,6 +57,41 @@ export default function Post({ id, user_name, user_nim, user_mail, room_name, st
     setNewStatus("");
   }
 
+  // Function to change history status
+  const handleCancel = async (e: React.FormEvent) => {
+    try{
+      fetch ('/api/cancel-request', {method: 'POST', headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: id,
+          nim: user_nim,
+          status: newStatus,
+        })
+      })
+    }catch(error){
+      console.log(error);
+    } finally {
+      // Send Email
+      fetch ('/api/send-email', {method: 'POST', headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: id,
+          name: user_name,
+          mail: user_mail,
+          room: room_name,
+          startSession: startSession,
+          startDate: startDate,
+          status: newStatus,
+        })
+      })
+    }
+
+    // Reset form
+    setNewStatus("");
+  }
+
   return (
     <>
       <td className="p-4 border">{user_name}</td>
@@ -90,15 +125,28 @@ export default function Post({ id, user_name, user_nim, user_mail, room_name, st
         )}
 
         {status === "accepted" && (
-          <p>
-            Accepted
-          </p>
+          // Cancel and set to pending
+          <form onSubmit={handleCancel}>
+            <button
+              type="submit"
+              className="bg-red-500 hover:bg-red-700 text-white w-full py-2 px-4 font-bold rounded"
+              onClick={() => setNewStatus("cancelled")}
+            >
+              Cancel
+            </button>
+          </form>
         )}
 
         {status === "declined" && (
-          <p>
+          <p className="text-red-500">
             Declined
           </p>
+        )}
+
+        {/* If status cancelled */}
+        {status === "cancelled" && (
+          // Cancelled Text
+          <div className="text-red-500">Cancelled</div>
         )}
       </td>
     </>

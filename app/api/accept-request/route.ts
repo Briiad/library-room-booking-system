@@ -27,14 +27,9 @@ export async function POST(request: Request){
         status: status
       }
     })
-
-    // Then delete the request data from room table
-    const deleteRequest = await prisma.room.delete({
-      where: {
-        id: id
-      }
-    })
   }
+
+
 
   return NextResponse.json({data: res})
 }

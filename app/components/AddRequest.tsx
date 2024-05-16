@@ -30,63 +30,90 @@ export default function AddRequest() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate email address (must contain an @student or @gmail domain)
+    // Handle form submission logic here
     const emailRegex = /@student|@gmail\.com/;
-    if (!emailRegex.test(mail)) {
-      alert("Email must contain @student or @gmail domain");
+
+    // Handle form submission logic here
+    // Check if every field is filled
+    if (!name || !nim || !mail || !roomName || !startSession || !startDate) {
+      toast({
+        title: "Error",
+        description: "Please fill all fields.",
+        status: "warning",
+        duration: 3000,
+        position: 'top-right',
+        isClosable: true
+      });
+      return;
+    } else if(!emailRegex.test(mail)){
+      toast({
+        title: "Error",
+        description: "Please use a valid @student or @gmail email address.",
+        status: "warning",
+        duration: 3000,
+        position: 'top-right',
+        isClosable: true
+      });
       return;
     } else {
-      // Handle form submission logic here
       try{
         fetch ('/api/add-request', {method: 'POST', headers: {
-        'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: name,
-          nim: nim,
-          mail: mail,
-          roomName: roomName,
-          startSession: startSession,
-          // Convert date to ISO string
-          startDate: new Date(startDate).toISOString(),
-        })
-      }).then((res) => {
-        if (res.ok) {
-          toast({
-            title: 'Request Accepted',
-            description: "Request will be reviewed by admin. Please wait for the confirmation via email.",
-            status: 'success',
-            duration: 9000,
-            position: 'top-right',
-            isClosable: true,
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: name,
+            nim: nim,
+            mail: mail,
+            roomName: roomName,
+            startSession: startSession,
+            startDate: new Date(startDate).toISOString(),
           })
-        } else{
+        }).then((res) => {
+          console.log(res);
+          // Check if there res is 202
+          if (res.ok) {
+            toast({
+              title: 'Request Accepted',
+              description: "Request will be reviewed by admin. Please wait for the confirmation via email.",
+              status: 'success',
+              duration: 9000,
+              position: 'top-right',
+              isClosable: true,
+            })
+          } else {
+            toast({
+              title: 'Error',
+              description: "Date already booked, Please choose another date or room.",
+              status: 'error',
+              duration: 9000,
+              position: 'top-right',
+              isClosable: true,
+            })
+          }
+        })
+        }catch(error){
           toast({
-            title: 'Request failed',
-            description: "Date already booked, Please choose another date or room.",
+            title: 'Error',
+            description: "Something went wrong, please try again later.",
             status: 'error',
             duration: 9000,
             position: 'top-right',
             isClosable: true,
           })
+        } finally {
+          // Close modal
+          onClose();
         }
-      })
-      }catch(error){
-        console.error('Error:', error);
-      } finally {
-        // Close modal
-        onClose();
-      }
+    
+        // Reset form
+        setName("");
+        setNim("");
+        setMail("");
+        setRoomName("");
+        setStartSession("");
+        setStartDate("");
+      };
     }
-
-    // Reset form
-    setName("");
-    setNim("");
-    setMail("");
-    setRoomName("");
-    setStartSession("");
-    setStartDate("");
-  };
 
   return (
     <ChakraProvider>

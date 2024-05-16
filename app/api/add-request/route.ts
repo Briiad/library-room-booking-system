@@ -16,8 +16,7 @@ export async function POST(request: Request){
   })
 
   if (check) {
-    // return error if there is the same data
-    return NextResponse.json({error: "Data already exist"}, {status: 400})
+    return NextResponse.json({statusText: "Date already booked, Please choose another date or room."}, {status: 400})
   } else {
     const result = await prisma.room.create({
       data: {
@@ -29,7 +28,6 @@ export async function POST(request: Request){
         startDate: startDate
       }
     })
+    return NextResponse.json({data: result}, {status: 202})
   }
-
-  return NextResponse.json({data: res})
 }
