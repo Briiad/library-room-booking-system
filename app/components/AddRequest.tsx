@@ -182,29 +182,20 @@ export default function AddRequest() {
                 required
               />
             </div>
-            {/* Dropdown Room Name */}
             <div className="flex-1">
-              <label htmlFor="roomName" className="text-sm">
-                Room Name
-              </label>
-              <select
-                name="roomName"
-                id="roomName"
-                value={roomName}
-                onChange={(e) => setRoomName(e.target.value)}
-                className="w-full p-2 border border-gray-400 rounded mt-1"
-                required
-              >
-                <option value="">Select Room</option>
-                <option value="Colab 1">Colab 1</option>
-                <option value="Colab 2">Colab 2</option>
-                <option value="Colab 3">Colab 3</option>
-                <option value="Colab 4">Colab 4</option>
-                <option value="Colab 5">Colab 5</option>
-                <option value="Colab 6">Colab 6</option>
-                <option value="Podcast">Podcast Room</option>
-              </select>
-            </div>
+                <label htmlFor="endDate" className="text-sm">
+                  Start Date
+                </label>
+                <input
+                  type="date"
+                  name="startDate"
+                  id="startDate"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  className="w-full p-2 border border-gray-400 rounded mt-1"
+                  required
+                />
+              </div>
             {/* Start Date, End Date Side by Side */}
             <div className="flex flex-col md:flex-row md:space-x-4">
               <div className="flex-1">
@@ -227,19 +218,28 @@ export default function AddRequest() {
                   <option value="15.00 - 17.00">15.00 - 17.00</option>
                 </select>
               </div>
+              {/* Dropdown Room Name */}
               <div className="flex-1">
-                <label htmlFor="endDate" className="text-sm">
-                  Start Date
+                <label htmlFor="roomName" className="text-sm">
+                  Room Name
                 </label>
-                <input
-                  type="date"
-                  name="startDate"
-                  id="startDate"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
+                <select
+                  name="roomName"
+                  id="roomName"
+                  value={roomName}
+                  onChange={(e) => setRoomName(e.target.value)}
                   className="w-full p-2 border border-gray-400 rounded mt-1"
                   required
-                />
+                >
+                  <option value="">Select Room</option>
+                  <option value="Colab 1">Colab 1</option>
+                  <option value="Colab 2">Colab 2</option>
+                  <option value="Colab 3">Colab 3</option>
+                  <option value="Colab 4">Colab 4</option>
+                  <option value="Colab 5">Colab 5</option>
+                  <option value="Colab 6">Colab 6</option>
+                  <option value="Podcast">Podcast Room</option>
+                </select>
               </div>
             </div>
             {/* Submit Button */}

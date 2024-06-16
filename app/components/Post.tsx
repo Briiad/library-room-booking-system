@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 
+import {
+  useToast
+} from '@chakra-ui/react'
+
 interface PostProps {
     id: string;
     user_name: string;
@@ -16,6 +20,7 @@ interface PostProps {
 export default function Post({ id, user_name, user_nim, user_mail, room_name, startSession, startDate, status }: PostProps) {
 
   const [newStatus, setNewStatus] = useState("");
+  const toast = useToast()
 
   // Function Change Database Status
   const handleRequest = async (e: React.FormEvent) => {
@@ -50,6 +55,16 @@ export default function Post({ id, user_name, user_nim, user_mail, room_name, st
           startDate: startDate,
           status: newStatus,
         })
+      }).then((response) => {
+        if (response.ok) {
+          toast({
+            title: "User Request Changed",
+            description: "User Request has been changed",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          })
+        }
       })
     }
 
@@ -85,6 +100,16 @@ export default function Post({ id, user_name, user_nim, user_mail, room_name, st
           startDate: startDate,
           status: newStatus,
         })
+      }).then((response) => {
+        if (response.ok) {
+          toast({
+            title: "User Request Changed",
+            description: "User Request has been changed",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          })
+        }
       })
     }
 

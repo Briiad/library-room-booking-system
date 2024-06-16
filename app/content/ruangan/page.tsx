@@ -32,11 +32,7 @@ export default function Ruangan() {
             </Text>
           </CardBody>
 
-          <CardFooter>
-            <Button variant='solid' colorScheme='orange'>
-              Buy Latte
-            </Button>
-          </CardFooter>
+          
         </Stack>
       </Card>
 
@@ -63,11 +59,7 @@ export default function Ruangan() {
             </Text>
           </CardBody>
 
-          <CardFooter>
-            <Button variant='solid' colorScheme='orange'>
-              Buy Latte
-            </Button>
-          </CardFooter>
+          
         </Stack>
       </Card>
 
@@ -94,11 +86,7 @@ export default function Ruangan() {
             </Text>
           </CardBody>
 
-          <CardFooter>
-            <Button variant='solid' colorScheme='orange'>
-              Buy Latte
-            </Button>
-          </CardFooter>
+          
         </Stack>
       </Card>
 
@@ -125,11 +113,7 @@ export default function Ruangan() {
             </Text>
           </CardBody>
 
-          <CardFooter>
-            <Button variant='solid' colorScheme='orange'>
-              Buy Latte
-            </Button>
-          </CardFooter>
+          
         </Stack>
       </Card>
 
@@ -156,11 +140,7 @@ export default function Ruangan() {
             </Text>
           </CardBody>
 
-          <CardFooter>
-            <Button variant='solid' colorScheme='orange'>
-              Buy Latte
-            </Button>
-          </CardFooter>
+          
         </Stack>
       </Card>
     </Box>

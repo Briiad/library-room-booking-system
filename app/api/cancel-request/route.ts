@@ -14,14 +14,14 @@ export async function POST(request: Request){
     }  
   })
 
-  const result2 = await prisma.room.update({
-    where: {
-      id: id
-    },
-    data: {
-      status: status
-    }
-  })
+  // Delete the request if it's cancelled
+  if (status === "cancelled") {
+    await prisma.room.delete({
+      where: {
+        id: id
+      }
+    })
+  }
 
   return NextResponse.json({data: res})
 }

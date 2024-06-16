@@ -43,25 +43,25 @@ export default async function Admin({
         <tbody>
           {/* If theres no data to shown, put one td with note */}
           {/* Else show data */}
-          {entries.length === 0 ? (
+          {entries?.length === 0 ? (
             <tr>
               <td colSpan={6} className="p-2 border">
                 No Request Available at The Moment
               </td>
             </tr>
           ) : (
-            entries.map((entry) => {
+            entries?.map((entry) => {
               return(
-                <tr key={entry.id}>
+                <tr key={entry?.id}>
                   <Post
-                    id={entry.id}
-                    user_name={entry.user_name}
-                    user_nim={entry.user_nim}
-                    user_mail={entry.user_mail}
-                    room_name={entry.room_name}
-                    startSession={entry.startSession}
-                    startDate={entry.startDate}
-                    status={entry.status}
+                    id={entry?.id}
+                    user_name={entry?.user_name}
+                    user_nim={entry?.user_nim}
+                    user_mail={entry?.user_mail}
+                    room_name={entry?.room_name}
+                    startSession={entry?.startSession}
+                    startDate={entry?.startDate}
+                    status={entry?.status}
                   />
                 </tr>
               )
